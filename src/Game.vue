@@ -1,15 +1,17 @@
 <template>
-  <div id="app">
-    <player
-        :name="player1.name"
-        :life="player1.life"
-        @attacking="attacks(player2, $event.attackDamage)">
-    </player>
-    <player
-        :name="player2.name"
-        :life="player2.life"
-        @attacking="attacks(player1, $event.attackDamage)">
-    </player>
+  <div id="game">
+    <main id="arena">
+      <player
+          :name="player1.name"
+          :life="player1.life"
+          @attacking="attacks(player2, $event.attackDamage)">
+      </player>
+      <player
+          :name="player2.name"
+          :life="player2.life"
+          @attacking="attacks(player1, $event.attackDamage)">
+      </player>
+    </main>
     <button @click="restart">Reiniciar</button>
   </div>
 </template>
@@ -45,7 +47,7 @@ export default {
         alert(`Vitória! ${this.player2.name} venceu ${this.player1.name}`);
       }
     },
-    $_game_checkGame() {
+    $_game_checkWin() {
       if (this.player1.life && this.player2.life) {
         return;
       } else {
@@ -70,28 +72,42 @@ export default {
 
   created() {
     this.$on('attacked', () => {
-      this.$_game_checkGame();
+      this.$_game_checkWin();
     })
   }
 }
 </script>
 
 <style lang="scss" scoped>
-#app {
+#game {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 981px) {
+    width: 980px;
+  }
+}
+
+
+#arena {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 30px;
   justify-content: center;
-  margin-top: 60px;
-  margin: auto;
   text-align: center;
-  width: 980px;
 
   .player {
-    width: 50%;
+    flex-grow: 1;
 
     @media (max-width: 568px) {
       width: 100%;
     }
   }
 }
+
+
 </style>
