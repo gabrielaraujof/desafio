@@ -2,7 +2,11 @@
   <section class="player">
       <h1>{{name}}</h1>
       <h3>{{life}}%</h3>
-      <button>Atacar</button>
+      <button
+          @click="$emit('attacking', {attackDamage})"
+          :disabled="life <= 0">
+        Atacar
+      </button>
   </section>
 </template>
 

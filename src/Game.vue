@@ -2,11 +2,13 @@
   <div id="app">
     <player
         :name="player1.name"
-        :life="player1.life">
+        :life="player1.life"
+        @attacking="attacks(player2, $event.attackDamage)">
     </player>
     <player
         :name="player2.name"
-        :life="player2.life">
+        :life="player2.life"
+        @attacking="attacks(player1, $event.attackDamage)">
     </player>
   </div>
 </template>
@@ -31,7 +33,17 @@ export default {
         life: 100,
       },
     }
-  }
+  },
+
+  methods: {
+    attacks(player, damage) {
+      if (player.life > damage) {
+        player.life -= damage;
+      } else {
+        player.life = 0;
+      }
+    },
+  },
 }
 </script>
 
