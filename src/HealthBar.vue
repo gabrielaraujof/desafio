@@ -1,14 +1,16 @@
 <template>
   <div class="health-bar">
+    <div class="bar">
+      <div
+          :class="['health', {'being-hit': beingHit}]"
+          :style="{width: `${health}%`}">
+      </div>
+      <div
+          class="damage"
+          :style="{width: `${health}%`}">
+      </div>
+    </div>
     <div class="legend">{{`${health}%`}}</div>
-    <div
-        :class="['health', {'being-hit': beingHit}]"
-        :style="{width: `${health}%`}">
-    </div>
-    <div
-        class="damage"
-        :style="{width: `${health}%`}">
-    </div>
   </div>
 </template>
 
@@ -36,14 +38,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$bar-height: 24px;
 $health-color: #3c3;
 
 .health-bar {
-  background-color: #bbb;
+  position: relative;
+}
+
+.bar {
+  background-color: #ddd;
   border-radius: 8px;
   border: 2px solid darken($health-color, 5%);
   box-shadow: 1px 1px 4px 1px #ddd;
-  height: 24px;
+  height: $bar-height;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -74,20 +81,42 @@ $health-color: #3c3;
 }
 
 .legend {
+  $legend-height: .9 * $bar-height;
+  $legend-skew: 6px;
+  $legend-bgc: #f3760e;
+
   align-items: center;
+  background-color: $legend-bgc;
+  color: #fff;
   display: flex;
-  height: 100%;
+  font-weight: bold;
+  height: $legend-height;
   justify-content: center;
+  line-height: 1.2;
+  margin-left: 16px;
+  padding: 0 8px;
   position: absolute;
-  width: 100%;
+  top: 2/3 * $bar-height;
   z-index: 999;
 
-  text-shadow: 1px 1px 2px #222;
-  font: {
-    weight: bold;
-    size: 1.2em;
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
   }
-  color: #fff;
+
+  &:after {
+    border-right: $legend-skew solid transparent;
+    border-top: $legend-height solid $legend-bgc;
+    right: - $legend-skew;
+  }
+
+  &:before {
+    border-bottom: $legend-height solid $legend-bgc;
+    border-left: $legend-skew solid transparent;
+    left: - $legend-skew;
+  }
 }
 
 @keyframes damaging {
