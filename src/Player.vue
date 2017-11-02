@@ -2,7 +2,6 @@
   <section class="player">
       <h1>{{name}}</h1>
       <health-bar :health="life"></health-bar>
-      <h3>{{life}}%</h3>
       <button
           @click="$emit('attacking', {attackDamage})"
           :disabled="life <= 0">
@@ -34,6 +33,10 @@ export default {
 <style lang="scss" scoped>
 .player {
   padding: 0 24px;
+}
+
+.health-bar {
+  margin: 16px 0;
 }
 </style>
 

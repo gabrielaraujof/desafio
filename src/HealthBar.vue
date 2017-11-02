@@ -1,5 +1,6 @@
 <template>
   <div class="health-bar">
+    <div class="legend">{{`${health}%`}}</div>
     <div
         :class="['health', {'being-hit': beingHit}]"
         :style="{width: `${health}%`}">
@@ -35,12 +36,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$health-color: #3c3;
+
 .health-bar {
-  background-color: #eee;
-  border-radius: 2vw;
-  border: 1px solid #aaa;
+  background-color: #bbb;
+  border-radius: 8px;
+  border: 2px solid darken($health-color, 5%);
   box-shadow: 1px 1px 4px 1px #ddd;
-  height: 2vw;
+  height: 24px;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -57,9 +60,9 @@ export default {
 .health {
   @extend .damage;
 
-  background-color: #3c3;
+  background-color: $health-color;
   transition: width .1s linear;
-  z-index: 999;
+  z-index: 888;
 
   &.being-hit {
     animation-name: damaging;
@@ -68,6 +71,23 @@ export default {
     animation-direction: alternate;
     animation-timing-function: linear;
   }
+}
+
+.legend {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+
+  text-shadow: 1px 1px 2px #222;
+  font: {
+    weight: bold;
+    size: 1.2em;
+  }
+  color: #fff;
 }
 
 @keyframes damaging {
