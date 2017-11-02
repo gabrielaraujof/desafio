@@ -78,7 +78,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 #game {
   width: 100%;
   margin: auto;
