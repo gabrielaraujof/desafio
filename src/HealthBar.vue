@@ -97,6 +97,7 @@ $health-color: #3c3;
   padding: 0 8px;
   position: absolute;
   top: 2/3 * $bar-height;
+  width: 48px;
   z-index: 999;
 
   &:after,
