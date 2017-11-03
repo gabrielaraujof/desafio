@@ -37,7 +37,7 @@ export default {
 }
 
 .health-bar {
-  margin: 16px 0;
+  margin: 16px 0 48px;
 }
 </style>
 

@@ -127,7 +127,7 @@ body {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 50px 0;
+  margin: 30px 0;
   justify-content: center;
   text-align: center;
 
