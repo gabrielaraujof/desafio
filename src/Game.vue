@@ -42,6 +42,7 @@ export default {
   },
 
   methods: {
+
     $_game_declareWinner(winner) {
       this.gameRunning = false;
       const message = `${winner.name} venceu a luta!`;
@@ -57,6 +58,7 @@ export default {
       .then(() => this.start())
       .catch(() => {});
     },
+
     $_game_checkWin() {
       if (!this.player1.life) {
         this.$_game_declareWinner(this.player2);
@@ -65,6 +67,7 @@ export default {
         this.$_game_declareWinner(this.player1);
       }
     },
+
     attacks(player, damage) {
       if (!this.gameRunning) {
         return;
@@ -78,6 +81,7 @@ export default {
 
       this.$emit('attacked');
     },
+
     start() {
       this.gameRunning = true;
       this.player1.life = 100;
