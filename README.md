@@ -25,3 +25,29 @@ O design é muito importante, mas o UX é mais.
 Testes também fazem a diferença.
 
 #### Faça um fork deste repositório e boa sorte!
+
+
+# SOLUÇÃO
+
+Esta é uma solução para o desafio proposto baseada no framework Vue.js e utilizando algumas das mais novas ferramentas de desenvolvimento front-end.
+
+## Demo live
+
+A solução pode ser facilmente acessada no link [https://desafio-s2it.firebaseapp.com/](https://desafio-s2it.firebaseapp.com/)
+
+## Executar localmente: passo-a-passo
+
+``` bash
+# instala as dependências
+npm install
+
+# inicia a aplicação localmente (localhost:8080)
+npm run dev
+
+# constrói a aplicação para produção
+npm run build
+
+# executa os testes de unidade
+npm run test
+```
+
