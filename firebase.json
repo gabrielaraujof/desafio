@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "public": ".",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": [
+      "**/node_modules/**",
+      ".babelrc",
+      ".firebaserc",
+      ".gitignore",
+      ".package.json",
+      "README.md",
+      "firebase.json",
+      "src/**",
+      "webpack.config.js",
+      "mock/**"
+    ]
+  }
+}
