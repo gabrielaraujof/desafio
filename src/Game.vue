@@ -47,7 +47,7 @@ export default {
       const message = `${winner.name} venceu a luta!`;
 
       this.$confirm(message, 'Vitória!', {
-        cancelButtonText: 'Cancelar',
+        cancelButtonText: 'Ok',
         closeOnClickModal: false,
         closeOnPressEscape: false,
         confirmButtonText: 'Reiniciar',
