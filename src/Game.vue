@@ -45,10 +45,10 @@ export default {
 
     $_game_declareWinner(winner) {
       this.gameRunning = false;
-      const message = `${winner.name} venceu a luta!`;
+      const message = `${winner.name} venceu a luta! Reiniciar?`;
 
       this.$confirm(message, 'Vitória!', {
-        cancelButtonText: 'Ok',
+        cancelButtonText: 'Cancelar',
         closeOnClickModal: false,
         closeOnPressEscape: false,
         confirmButtonText: 'Reiniciar',
@@ -106,6 +106,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -147,6 +149,19 @@ body {
 
   .message-box {
     width: inherit;
+  }
+}
+
+.message-box {
+  .el-message-box__status {
+    &.el-icon-success {
+      font-family: "Ionicons"!important;
+      color: gold;
+
+      &:before {
+        content: '\f356';
+      }
+    }
   }
 }
 </style>
