@@ -2,11 +2,12 @@
   <section class="player">
       <h1>{{name}}</h1>
       <health-bar :health="life"></health-bar>
-      <button
+      <el-button
+          type="warning"
           @click="$emit('attacking', {attackDamage})"
-          :disabled="life <= 0">
-        Atacar
-      </button>
+          :disabled="!canAttack">
+        ATACAR
+      </el-button>
   </section>
 </template>
 
@@ -20,7 +21,7 @@ export default {
     HealthBar
   },
 
-  props: ['name', 'life'],
+  props: ['name', 'life', 'canAttack'],
 
   data() {
     return {
